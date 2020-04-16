@@ -5,6 +5,10 @@ use \DateTimeInterface;
 
 interface MediaObjectInterface extends CreativeWorkInterface
 {
+	public function getBitRate():? string;
+
+	public function setBitRate(?string $val): void;
+
 	public function getContentSize():? string;
 
 	public function setContentSize(?string $val): void;
@@ -12,6 +16,10 @@ interface MediaObjectInterface extends CreativeWorkInterface
 	public function getContentUrl():? string;
 
 	public function setContentUrl(?string $val): void;
+
+	public function getEmbedUrl():? string;
+
+	public function setEmbedUrl(?string $val): void;
 
 	public function getEncodingFormat():? string;
 

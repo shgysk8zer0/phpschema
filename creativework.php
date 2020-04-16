@@ -1,9 +1,11 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{
-	PersonorOrganizationInterface,
+	AudioObjectInterface,
 	CreativeWorkInterface,
+	PersonorOrganizationInterface,
 	ThingInterface,
+	VideoObjectInterface,
 };
 
 use \shgysk8zer0\PHPSchema\Traits\{DateTimeTrait};
@@ -15,6 +17,8 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 	use DateTimeTrait;
 
 	public const TYPE = 'CreativeWork';
+
+	private $_audio = null;
 
 	private $_about = null;
 
@@ -30,11 +34,17 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 
 	private $_dateCreated = null;
 
+	private $_genre = null;
+
+	private $_keywords = null;
+
 	private $_headline = null;
 
 	private $_publisher = null;
 
 	private $_text = null;
+
+	private $_video = null;
 
 	// @SEE https://schema.org/CreativeWork
 
@@ -43,6 +53,7 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		return array_merge(
 			parent::jsonSerialize(),
 			[
+				'audio'           => $this->getAudio(),
 				'about'           => $this->getAbout(),
 				'author'          => $this->getAuthor(),
 				'copyrightHolder' => $this->getCopyrightHolder(),
@@ -50,11 +61,24 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 				'dateCreated'     => $this->getDateCreatedAsString(),
 				'dateModified'    => $this->getDateModifiedAsString(),
 				'datePublished'   => $this->getDatePublishedAsString(),
+				'genre'           => $this->getGenre(),
+				'keywords'        => $this->getKeywords(),
 				'headline'        => $this->getHeadline(),
 				'publisher'       => $this->getPublisher(),
 				'text'            => $this->getText(),
+				'video'           => $this->getVideo(),
 			]
 		);
+	}
+
+	public function getAudio():? AudioObjectInterface
+	{
+		return $this->_audio;
+	}
+
+	public function setAudio(?AudioObjectInterface $val): void
+	{
+		$this->_audio = $val;
 	}
 
 	public function getAbout():? ThingInterface
@@ -142,6 +166,16 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		$this->_datePublished = $val;
 	}
 
+	public function getGenre():? string
+	{
+		return $this->_genre;
+	}
+
+	public function setGenre(?string $val): void
+	{
+		$this->_genre = $val;
+	}
+
 	public function getHeadline():? string
 	{
 		return $this->_headline;
@@ -150,6 +184,16 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 	public function setHeadline(?string $val): void
 	{
 		$this->_headline = $val;
+	}
+
+	public function getKeywords():? string
+	{
+		return $this->_keywords;
+	}
+
+	public function setKeywords(?string $val): void
+	{
+		$this->_keywords = $val;
 	}
 
 	public function getPublisher():? PersonorOrganizationInterface
@@ -170,6 +214,16 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 	public function setText(?string $val): void
 	{
 		$this->_text = $val;
+	}
+
+	public function getVideo():? VideoObjectInterface
+	{
+		return $this->_video;
+	}
+
+	public function setVideo(?VideoObjectInterface $val): void
+	{
+		$this->_video = $val;
 	}
 
 	public function setFromObject(?object $data): void

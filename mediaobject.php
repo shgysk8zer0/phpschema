@@ -10,9 +10,13 @@ class MediaObject extends CreativeWork implements MediaObjectInterface
 
 	public const TYPE = 'MediaObject';
 
+	private $_bitRate = null;
+
 	private $_contentSize = null;
 
 	private $_contentUrl = null;
+
+	private $_embedUrl = null;
 
 	private $_encodingFormat = null;
 
@@ -27,14 +31,26 @@ class MediaObject extends CreativeWork implements MediaObjectInterface
 		return array_merge(
 			parent::jsonSerialize(),
 			[
+				'bitRate'        => $this->getBitRate(),
 				'contentSize'    => $this->getContentSize(),
 				'contentUrl'     => $this->getContentUrl(),
+				'embedUrl'       => $this->getEmbedUrl(),
 				'encodingFormat' => $this->getEncodingFormat(),
 				'height'         => $this->getHeight(),
 				'width'          => $this->getWidth(),
 				'uploadDate'     => $this->getUploadDateAsString(),
 			]
 		);
+	}
+
+	public function getBitRate():? string
+	{
+		return $this->_bitRate;
+	}
+
+	public function setBitRate(?string $val): void
+	{
+		$this->_bitRate = $val;
 	}
 
 	public function getContentSize():? string
@@ -58,6 +74,20 @@ class MediaObject extends CreativeWork implements MediaObjectInterface
 			throw new InvalidArgumentException(sprintf('%s is not a valid URL with path', $val));
 		} else {
 			$this->_contentUrl = $val;
+		}
+	}
+
+	public function getEmbedUrl():? string
+	{
+		return $this->_embedUrl;
+	}
+
+	public function setEmbedUrl(?string $val): void
+	{
+		if (isset($val) and ! filter_var($val, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
+			throw new InvalidArgumentException(sprintf('%s is not a valid embedding URL', $val));
+		} else {
+			$this->_embedUrl = $val;
 		}
 	}
 

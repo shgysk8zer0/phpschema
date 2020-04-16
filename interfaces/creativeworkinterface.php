@@ -6,6 +6,9 @@ use \DateTimeInterface;
 interface CreativeWorkInterface extends ThingInterface
 {
 	// @SEE https://schema.org/CreativeWork
+	public function getAudio():? AudioObjectInterface;
+
+	public function setAudio(?AudioObjectInterface $val): void;
 
 	public function getAbout():? ThingInterface;
 
@@ -41,9 +44,17 @@ interface CreativeWorkInterface extends ThingInterface
 
 	public function setDateModified(?DateTimeInterface $val): void;
 
+	public function getGenre():? string;
+
+	public function setGenre(?string $val): void;
+
 	public function getHeadline():? string;
 
 	public function setHeadline(?string $val): void;
+
+	public function getKeywords():? string;
+
+	public function setKeywords(?string $val): void;
 
 	public function getPublisher():? PersonorOrganizationInterface;
 
@@ -52,4 +63,8 @@ interface CreativeWorkInterface extends ThingInterface
 	public function getText():? string;
 
 	public function setText(?string $val): void;
+
+	public function getVideo():? VideoObjectInterface;
+
+	public function setVideo(?VideoObjectInterface $val): void;
 }
