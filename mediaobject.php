@@ -5,6 +5,8 @@ use \DateTimeInterface;
 
 class MediaObject extends CreativeWork implements MediaObjectInterface
 {
+	public const TYPE = 'MediaObject';
+
 	private $_height = null;
 
 	private $_uploadDate = null;

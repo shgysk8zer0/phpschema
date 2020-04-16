@@ -4,7 +4,7 @@ use \shgysk8zer0\PHPSchema\Interfaces\{ImageObjectInterface, ThingInterface};
 
 class Thing implements ThingInterface
 {
-	public const TYPE = self::class;
+	public const TYPE = 'Thing';
 
 	public const CONTEXT = 'https://schema.org';
 

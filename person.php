@@ -7,6 +7,8 @@ class Person extends Thing implements PersonInterface
 {
 	use Traits\ContactableTrait;
 
+	public const TYPE = 'Person';
+
 	public function jsonSerialize(): array
 	{
 		return array_merge(

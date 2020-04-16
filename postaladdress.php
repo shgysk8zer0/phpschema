@@ -6,6 +6,8 @@ use \PDO;
 
 class PostalAddress extends Thing implements  PostalAddressInterface
 {
+	public const TYPE = 'PostalAddress';
+
 	private $_streetAddress = null;
 
 	private $_postOfficeBoxNumber = null;

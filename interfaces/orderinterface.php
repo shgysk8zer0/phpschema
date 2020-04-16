@@ -12,6 +12,8 @@ interface OrderInterface extends ThingInterface
 
 	public function setOrderDate(?DateTimeInterface $val): void;
 
+	public function getOrderDateAsString():? string;
+
 	public function getOrderItem(): iterable;
 
 	public function addOrderItem(OrderItemInterface $val): void;

@@ -17,7 +17,7 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 
 	public function jsonSerialize(): array
 	{
-		return array_filter(array_merge(
+		return array_merge(
 			parent::jsonSerialize(),
 			[
 				'author'        => $this->getAuthor(),
@@ -25,7 +25,7 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 				'copyrightyear' => $this->getCopyrightYear(),
 				'text'          => $this->getText(),
 			]
-		));
+		);
 	}
 
 	public function getAuthor():? PersonInterface
