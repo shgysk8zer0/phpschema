@@ -1,6 +1,10 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
-use \shgysk8zer0\PHPSchema\Interfaces\{PlaceInterface, GeoCoordinatesInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+	GeoCoordinatesInterface,
+	OrganizationInterface,
+	PlaceInterface,
+};
 use \shgysk8zer0\PHPSchema\Traits\{PlaceTrait, PriceRangeTrait};
 
 class LocalBusiness extends Organization implements PlaceInterface, GeoCoordinatesInterface

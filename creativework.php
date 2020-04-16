@@ -20,6 +20,8 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 
 	private $_author = null;
 
+	private $_copytightHolder = null;
+
 	private $_copyrightYear = null;
 
 	private $_datePublished = null;
@@ -41,15 +43,16 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		return array_merge(
 			parent::jsonSerialize(),
 			[
-				'about'         => $this->getAbout(),
-				'author'        => $this->getAuthor(),
-				'copyrightyear' => $this->getCopyrightYear(),
-				'dateCreated'   => $this->getDateCreatedAsString(),
-				'dateModified'  => $this->getDateModifiedAsString(),
-				'datePublished' => $this->getDatePublishedAsString(),
-				'headline'      => $this->getHeadline(),
-				'publisher'     => $this->getPublisher(),
-				'text'          => $this->getText(),
+				'about'           => $this->getAbout(),
+				'author'          => $this->getAuthor(),
+				'copyrightHolder' => $this->getCopyrightHolder(),
+				'copyrightyear'   => $this->getCopyrightYear(),
+				'dateCreated'     => $this->getDateCreatedAsString(),
+				'dateModified'    => $this->getDateModifiedAsString(),
+				'datePublished'   => $this->getDatePublishedAsString(),
+				'headline'        => $this->getHeadline(),
+				'publisher'       => $this->getPublisher(),
+				'text'            => $this->getText(),
 			]
 		);
 	}
@@ -72,6 +75,16 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 	public function setAuthor(?PersonorOrganizationInterface $val): void
 	{
 		$this->_author = $val;
+	}
+
+	public function getCopyrightHolder():? PersonorOrganizationInterface
+	{
+		return $this->_copytightHolder;
+	}
+
+	public function setCopyrightHolder(?PersonorOrganizationInterface $val): void
+	{
+		$this->_copytightHolder = $val;
 	}
 
 	public function getCopyrightYear():? int
