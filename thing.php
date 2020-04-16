@@ -25,15 +25,21 @@ class Thing implements ThingInterface
 		}
 	}
 
+	public function __debugInfo(): array
+	{
+		return $this->jsonSerialize();
+	}
+
 	public function jsonSerialize(): array
 	{
 		return [
-			'@context'   => $this::CONTEXT,
-			'@type'      => $this::TYPE,
-			'identifier' => $this->getIdentifier(),
-			'name'       => $this->getName(),
-			'image'      => $this->getImage(),
-			'url'        => $this->getUrl(),
+			'@context'    => $this::CONTEXT,
+			'@type'       => $this::TYPE,
+			'identifier'  => $this->getIdentifier(),
+			'name'        => $this->getName(),
+			'description' => $this->getDescription(),
+			'image'       => $this->getImage(),
+			'url'         => $this->getUrl(),
 		];
 	}
 

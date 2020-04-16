@@ -10,11 +10,15 @@ interface EventInterface extends ThingInterface
 
 	public function getDoorTime():? DateTimeInterface;
 
+	public function getDoorTimeAsString():? string;
+
 	public function setDoorTime(?DateTimeInterface $val): void;
 
-	public function getEndTime():? DateTimeInterface;
+	public function getEndDate():? DateTimeInterface;
 
-	public function setEndTime(?DateTimeInterface $val): void;
+	public function getEndDateAsString():? string;
+
+	public function setEndDate(?DateTimeInterface $val): void;
 
 	public function getEventStatus():? EventStatusTypeInterface;
 
@@ -33,6 +37,8 @@ interface EventInterface extends ThingInterface
 	public function setOrganizer(?ContactableInterface $val): void;
 
 	public function getStartDate():? DateTimeInterface;
+
+	public function getStartDateAsString():? string;
 
 	public function setStartDate(?DateTimeInterface $val): void;
 

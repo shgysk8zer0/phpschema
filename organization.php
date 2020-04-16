@@ -3,7 +3,7 @@ namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{OrganizationInterface};
 use \Throwable;
 
-class Organization extends Thing
+class Organization extends Thing implements OrganizationInterface
 {
 	use Traits\ContactableTrait;
 

@@ -1,21 +1,36 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{OfferInterface};
+use \shgysk8zer0\PHPSchema\Traits\{DateTimeTrait, PriceSpecificationTrait};
+use \DateTimeInterface;
 
 class Offer extends Intangible implements OfferInterface
 {
+	use DateTimeTrait;
+	use PriceSpecificationTrait;
+
 	public const TYPE = 'Offer';
 
 	private $_price = 0;
 
 	private $_price_currency = null;
 
+	private $_validFrom = null;
+
+	private $_validThrough = null;
+
 	public function jsonSerialize(): array
 	{
-		return [
-			'price'         => $this->getPrice(),
-			'priceCurrency' => $this->getPriceCurrency(),
-		];
+		return array_merge(
+			parent::jsonSerialize(),
+			[
+				'price'              => $this->getPrice(),
+				'priceCurrency'      => $this->getPriceCurrency(),
+				'priceSpecification' => $this->getPriceSpecification(),
+				'validFrom'          => $this->getValidFromAsString(),
+				'validThrough'       => $this->getValidThroughAsString(),
+			]
+		);
 	}
 
 	public function getPrice(): float
@@ -36,5 +51,35 @@ class Offer extends Intangible implements OfferInterface
 	public function setPriceCurrency(?string $val): void
 	{
 		$this->_price_currency = $val;
+	}
+
+	public function getValidFrom():? DateTimeInterface
+	{
+		return $this->_validFrom;
+	}
+
+	public function getValidFromAsString():? string
+	{
+		return $this->_stringifyDate($this->getValidFrom());
+	}
+
+	public function setValidFrom(?DateTimeInterface $val): void
+	{
+		$this->_validFrom = $val;
+	}
+
+	public function getValidThrough():? DateTimeInterface
+	{
+		return $this->_validThrough;
+	}
+
+	public function getValidThroughAsString():? string
+	{
+		return $this->_stringifyDate($this->getValidThrough());
+	}
+
+	public function setValidThrough(?DateTimeInterface $val): void
+	{
+		$this->_validThrough = $val;
 	}
 }

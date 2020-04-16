@@ -1,5 +1,5 @@
 <?php
-namespace shysk8zer0\PHPAPI\Interfaces\Transaction;
+namespace shgysk8zer0\PHPSchema\Interfaces;
 
 interface OrganizationInterface extends ContactableInterface
 {

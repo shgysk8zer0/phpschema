@@ -14,6 +14,6 @@ trait OffersTrait
 
 	public function setOffers(OfferInterface... $val): void
 	{
-		$this->_offers - $val;
+		$this->_offers = $val;
 	}
 }

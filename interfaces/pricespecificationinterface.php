@@ -39,5 +39,5 @@ interface PriceSpecificationInterface extends StructuredValueInterface
 
 	public function getValueAddedTaxIncluded():? bool;
 
-	public function setValuAddedTaxIncluded(?bool $val): void;
+	public function setValueAddedTaxIncluded(?bool $val): void;
 }

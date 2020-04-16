@@ -1,5 +1,5 @@
 <?php
-namespace shgysk8zer0\PHPSchema\Interfaces;
+namespace shgysk8zer0\PHPSchema\Abstracts;
 use \shgysk8zer0\PHPSchema\{StructuredValue};
 use \shgysk8zer0\PHPSchema\Interfaces\{AbstractValueInterface};
 /**
@@ -18,7 +18,7 @@ abstract class AbstractValue extends StructuredValue implements AbstractValueInt
 
 	private $_value = null;
 
-	public function JsonSerializable(): array
+	public function jsonSerialize(): array
 	{
 		return array_merge(
 			parent::jsonSerialize(),

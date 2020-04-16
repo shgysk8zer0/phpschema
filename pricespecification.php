@@ -1,10 +1,14 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-use \shgysk8zer0\PHPSchema\Interfaces\{QuantitativeValueInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+	QuantitativeValueInterface,
+	PriceSpecificationInterface,
+};
+
 use \DateTimeInterface;
 
-class PriceSpecification extends StructuredValue
+class PriceSpecification extends StructuredValue implements PriceSpecificationInterface
 {
 	public const TYPE = 'PriceSpecification';
 
@@ -134,7 +138,7 @@ class PriceSpecification extends StructuredValue
 		return $this->_valuAddedTaxIncluded;
 	}
 
-	public function setValuAddedTaxIncluded(?bool $val): void
+	public function setValueAddedTaxIncluded(?bool $val): void
 	{
 		$this->_valuAddedTaxIncluded = $val;
 	}

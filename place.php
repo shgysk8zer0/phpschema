@@ -1,8 +1,12 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
-use \shgysk8zer0\PHPSchema\Interfaces\{GeoCoordinatesInterface, PostalAddressInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+	GeoCoordinatesInterface,
+	PostalAddressInterface,
+	PlaceInterface,
+};
 use \shgysk8zer0\PHPSchema\Traits\{GeoTrait, AddressTrait};
-class Place extends Thing
+class Place extends Thing implements PlaceInterface
 {
 	public const TYPE = 'Place';
 

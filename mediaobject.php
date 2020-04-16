@@ -1,10 +1,14 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{MediaObjectInterface};
+use \shgysk8zer0\PHPSchema\Traits\{DateTimeTrait};
 use \DateTimeInterface;
+use \DateTimeImmutable;
 
 class MediaObject extends CreativeWork implements MediaObjectInterface
 {
+	use DateTimeTrait;
+
 	public const TYPE = 'MediaObject';
 
 	private $_height = null;
@@ -20,7 +24,7 @@ class MediaObject extends CreativeWork implements MediaObjectInterface
 			[
 				'height'      => $this->getHeight(),
 				'width'       => $this->getWidth(),
-				'uploadDate'  => $this->getUploadDate(),
+				'uploadDate'  => $this->getUploadDateAsString(),
 			]
 		);
 	}
@@ -42,11 +46,7 @@ class MediaObject extends CreativeWork implements MediaObjectInterface
 
 	public function getUploadDateAsString():? string
 	{
-		if (isset($this->_uploadDate)) {
-			return $this->_uploadDate->format(\DateTime::W3C);
-		} else {
-			return null;
-		}
+		return $this->_stringifyDate($this->getUploadDate());
 	}
 
 	final public function setUploadDate(?DateTimeInterface $val): void

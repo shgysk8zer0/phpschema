@@ -9,6 +9,16 @@ class QuantitativeValue extends AbstractValue implements QuantitativeValueInterf
 
 	private $_additionalProperty = null;
 
+	public function jsonSerialize(): array
+	{
+		return array_merge(
+			parent::jsonSerialize(),
+			[
+				'additionalProperty' => $this->getAdditionalProperty(),
+			]
+		);
+	}
+
 	public function getAdditionalProperty():? PropertyValueInterface
 	{
 		return $this->_additionalProperty;
