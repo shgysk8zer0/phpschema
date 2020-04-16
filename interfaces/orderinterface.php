@@ -4,9 +4,9 @@ use \DateTimeInterface;
 
 interface OrderInterface extends ThingInterface
 {
-	public function getCustomer():? ContactableInterface;
+	public function getCustomer():? PersonorOrganizationInterface;
 
-	public function setCustomer(?ContactableInterface $val): void;
+	public function setCustomer(?PersonorOrganizationInterface $val): void;
 
 	public function getOrderDate():? DateTimeInterface;
 
@@ -18,7 +18,7 @@ interface OrderInterface extends ThingInterface
 
 	public function addOrderItem(OrderItemInterface $val): void;
 
-	public function getSeller():? ContactableInterface;
+	public function getSeller():? PersonorOrganizationInterface;
 
-	public function setSeller(?ContactableInterface $val): void;
+	public function setSeller(?PersonorOrganizationInterface $val): void;
 }

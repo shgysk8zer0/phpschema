@@ -31,12 +31,12 @@ class Order extends Thing
 		);
 	}
 
-	public function getCustomer():? ContactableInterface
+	public function getCustomer():? PersonorOrganizationInterface
 	{
 		return $this->_customer;
 	}
 
-	public function setCustomer(?ContactableInterface $val): void
+	public function setCustomer(?PersonorOrganizationInterface $val): void
 	{
 		$this->_customer = $val;
 	}
@@ -68,12 +68,12 @@ class Order extends Thing
 		}
 	}
 
-	public function getSeller():? ContactableInterface
+	public function getSeller():? PersonorOrganizationInterface
 	{
 		return $this->_seller;
 	}
 
-	public function setSeller(?ContactableInterface $val): void
+	public function setSeller(?PersonorOrganizationInterface $val): void
 	{
 		$this->_seller = $val;
 	}

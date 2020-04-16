@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Interfaces;
 use \DateTimeInterface;
-interface PersonInterface extends ContactableInterface
+interface PersonInterface extends PersonorOrganizationInterface
 {
 	public function getBirthDate():? DateTimeInterface;
 

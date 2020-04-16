@@ -8,7 +8,7 @@ interface InvoiceInterface extends IntangibleInterface
 
 	public function setConfirmationNumber(?string $val): void;
 
-	public function getCustomer():? ContactableInterface;
+	public function getCustomer():? PersonorOrganizationInterface;
 
 	public function setCustomer(?ContaqctableInterface $val): void;
 
@@ -24,9 +24,9 @@ interface InvoiceInterface extends IntangibleInterface
 
 	public function setPaymentStatus(?string $val): void;
 
-	public function getProvider():? ContactableInterface;
+	public function getProvider():? PersonorOrganizationInterface;
 
-	public function setProvider(?ContactableInterface $val): void;
+	public function setProvider(?PersonorOrganizationInterface $val): void;
 
 	public function getReferencesOrder():? OrderInterface;
 

@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Interfaces;
 
-interface ContactableInterface extends ThingInterface
+interface PersonorOrganizationInterface extends ThingInterface
 {
 	public function getAddress():? PostalAddressInterface;
 

@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{
-	ContactableInterface,
+	PersonorOrganizationInterface,
 	CreativeWorkInterface,
 	ThingInterface,
 };
@@ -64,12 +64,12 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		$this->_about = $val;
 	}
 
-	public function getAuthor():? ContactableInterface
+	public function getAuthor():? PersonorOrganizationInterface
 	{
 		return $this->_author;
 	}
 
-	public function setAuthor(?ContactableInterface $val): void
+	public function setAuthor(?PersonorOrganizationInterface $val): void
 	{
 		$this->_author = $val;
 	}
@@ -139,12 +139,12 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		$this->_headline = $val;
 	}
 
-	public function getPublisher():? ContactableInterface
+	public function getPublisher():? PersonorOrganizationInterface
 	{
 		return $this->_publisher;
 	}
 
-	public function setPublisher(?ContactableInterface $val): void
+	public function setPublisher(?PersonorOrganizationInterface $val): void
 	{
 		$this->_publisher = $val;
 	}
