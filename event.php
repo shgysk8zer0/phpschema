@@ -33,6 +33,8 @@ class Event extends Thing implements EventInterface
 
 	private $_eventStatus = null;
 
+	private $_performer = null;
+
 	private $_organizer = null;
 
 	private $_startDate = null;
@@ -51,6 +53,7 @@ class Event extends Thing implements EventInterface
 				'eventAttendanceMode' => $this->getEventAttendanceMode(),
 				'eventStatus'         => $this->getEventStatus(),
 				'location'            => $this->getLocation(),
+				'performer'           => $this->getPerformer(),
 				'organizer'           => $this->getOrganizer(),
 				'startdate'           => $this->getStartDateAsString(),
 				'offers'              => $this->getOffers(),
@@ -117,6 +120,16 @@ class Event extends Thing implements EventInterface
 	public function setEventStatus(?EventStatusTypeInterface $val): void
 	{
 		$this->_eventStatus = $val;
+	}
+
+	public function getPerformer():? ContactableInterface
+	{
+		return $this->_performer;
+	}
+
+	public function setPerformer(?ContactableInterface $val): void
+	{
+		$this->_performer = $val;
 	}
 
 	public function getOrganizer():? ContactableInterface

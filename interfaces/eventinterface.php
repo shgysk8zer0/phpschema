@@ -40,6 +40,10 @@ interface EventInterface extends ThingInterface
 
 	public function setOrganizer(?ContactableInterface $val): void;
 
+	public function getPerformer():? ContactableInterface;
+
+	public function setPerformer(?ContactableInterface $val): void;
+
 	public function getStartDate():? DateTimeInterface;
 
 	public function getStartDateAsString():? string;
