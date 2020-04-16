@@ -20,6 +20,10 @@ interface EventInterface extends ThingInterface
 
 	public function setEndDate(?DateTimeInterface $val): void;
 
+	public function getEventAttendanceMode():? EventAttendanceModeInterface;
+
+	public function setEventAttendanceMode(?EventAttendanceModeInterface $val): void;
+
 	public function getEventStatus():? EventStatusTypeInterface;
 
 	public function setEventStatus(?EventStatusTypeInterface $val): void;

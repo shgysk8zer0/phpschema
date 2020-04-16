@@ -8,6 +8,7 @@ use \shgysk8zer0\PHPSchema\Interfaces\{
 	ThingInterface,
 	PlaceInterface,
 	OfferInterface,
+	EventAttendanceModeInterface,
 };
 
 use \shgysk8zer0\PHPSchema\Traits\{OffersTrait, LocationTrait, DateTimeTrait};
@@ -28,6 +29,8 @@ class Event extends Thing implements EventInterface
 
 	private $_endDate = null;
 
+	private $_eventAttendanceMode = null;
+
 	private $_eventStatus = null;
 
 	private $_organizer = null;
@@ -42,15 +45,16 @@ class Event extends Thing implements EventInterface
 		return array_merge(
 			parent::jsonSerialize(),
 			[
-				'about'       => $this->getAbout(),
-				'doorTime'    => $this->getDoorTimeAsString(),
-				'endDate'     => $this->getEndDateAsString(),
-				'eventStatus' => $this->getEventStatus(),
-				'location'    => $this->getLocation(),
-				'organizer'   => $this->getOrganizer(),
-				'startdate'   => $this->getStartDateAsString(),
-				'offers'      => $this->getOffers(),
-				'subEvent'    => $this->getSubEvent(),
+				'about'               => $this->getAbout(),
+				'doorTime'            => $this->getDoorTimeAsString(),
+				'endDate'             => $this->getEndDateAsString(),
+				'eventAttendanceMode' => $this->getEventAttendanceMode(),
+				'eventStatus'         => $this->getEventStatus(),
+				'location'            => $this->getLocation(),
+				'organizer'           => $this->getOrganizer(),
+				'startdate'           => $this->getStartDateAsString(),
+				'offers'              => $this->getOffers(),
+				'subEvent'            => $this->getSubEvent(),
 			]
 		);
 	}
@@ -93,6 +97,16 @@ class Event extends Thing implements EventInterface
 	public function setEndDate(?DateTimeInterface $val): void
 	{
 		$this->_endDate = $val;
+	}
+
+	public function getEventAttendanceMode():? EventAttendanceModeInterface
+	{
+		return $this->_eventAttendanceMode;
+	}
+
+	public function setEventAttendanceMode(?EventAttendanceModeInterface $val): void
+	{
+		$this->_eventAttendanceMode = $val;
 	}
 
 	public function getEventStatus():? EventStatusTypeInterface
