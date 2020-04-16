@@ -13,14 +13,7 @@ class EventStatusType extends AbstractEventStatusType implements EventStatusType
 	public function __construct(string $type = self::STATUS)
 	{
 		if (is_null($type)) {
-			$logger = new \shgysk8zer0\PHPAPI\SAPILogger();
 			$type = $this::STATUS;
-			$logger->debug('Setting status to {status}{lf}$this::STATUS: {this_status}{lf}self::STATUS: {self_status}', [
-				'status'      => $type,
-				'this_status' => $this::STATUS,
-				'self_status' => self::STATUS,
-				'lf'          => PHP_EOL,
-			]);
 		}
 		$val = sprintf('%s::%s', __CLASS__, $type);
 		if (defined($val)) {
@@ -28,6 +21,14 @@ class EventStatusType extends AbstractEventStatusType implements EventStatusType
 		} else {
 			throw new InvalidArgumentException(sprintf('Invalid Event Status: %s', $type));
 		}
+	}
+
+	public function __debugInfo(): array
+	{
+		return [
+			'status' => $this->getStatus(),
+			'value'  => $this->getValue(),
+		];
 	}
 
 	public function __toString(): string
