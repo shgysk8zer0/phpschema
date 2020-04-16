@@ -100,6 +100,11 @@ class Thing implements ThingInterface
 		}
 	}
 
+	final public static function getSchemaUrl(): string
+	{
+		return sprintf('%s/%s', static::CONTEXT, static::TYPE);
+	}
+
 	public function setFromObject(object $data): void
 	{
 		$this->setIdentifier($data->identifier ?? null);
