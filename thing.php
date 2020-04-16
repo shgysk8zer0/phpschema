@@ -1,9 +1,15 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
-use \shgysk8zer0\PHPSchema\Interfaces\{ImageObjectInterface, ThingInterface};
 
-class Thing implements ThingInterface
+use \shgysk8zer0\PHPSchema\Interfaces\{ImageObjectInterface, ThingInterface};
+use \shgysk8zer0\PHPAPI\Interfaces\{LoggerAwareInterface};
+use \shgysk8zer0\PHPAPI\Traits\{LoggerAwareTrait};
+use \shgysk8zer0\PHPAPI\{NullLogger, UUID};
+
+class Thing implements ThingInterface, LoggerAwareInterface
 {
+	use LoggerAwareTrait;
+
 	public const TYPE = 'Thing';
 
 	public const CONTEXT = 'https://schema.org';
@@ -20,8 +26,17 @@ class Thing implements ThingInterface
 
 	public function __construct(?object $data = null)
 	{
+		$this->setLogger(new NullLogger());
+		$this->logger->info('Creating new {type}', ['type' => $this::TYPE]);
 		if (isset($data)) {
 			$this->setFromObject($data);
+		}
+	}
+
+	public function __clone()
+	{
+		if ($this->getIdentifier() !== null) {
+			$this->setIdentifier(new UUID());
 		}
 	}
 
