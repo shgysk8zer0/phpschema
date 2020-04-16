@@ -33,14 +33,14 @@ class PriceSpecification extends StructuredValue implements PriceSpecificationIn
 		return array_merge(
 			parent::jsonSerialize(),
 			[
-				'eligibleQuantity'     => $this->getEligibleQuantity(),
-				'maxPrice'             => $this->getMaxPrice(),
-				'minPrice'             => $this->getMinPrice(),
-				'price'                => $this->getPrice(),
-				'priceCurrency'        => $this->getPriceCurrency(),
-				'validFrom'            => $this->getValidFromAsString(),
-				'validThrough'         => $this->getValidThroughAsString(),
-				'valuAddedTaxIncluded' => $this->getValueAddedTaxIncluded(),
+				'eligibleQuantity'      => $this->getEligibleQuantity(),
+				'maxPrice'              => $this->getMaxPrice(),
+				'minPrice'              => $this->getMinPrice(),
+				'price'                 => $this->getPrice(),
+				'priceCurrency'         => $this->getPriceCurrency(),
+				'validFrom'             => $this->getValidFromAsString(),
+				'validThrough'          => $this->getValidThroughAsString(),
+				'valueAddedTaxIncluded' => $this->getValueAddedTaxIncluded(),
 			]
 		);
 	}

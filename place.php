@@ -5,22 +5,18 @@ use \shgysk8zer0\PHPSchema\Interfaces\{
 	PostalAddressInterface,
 	PlaceInterface,
 };
-use \shgysk8zer0\PHPSchema\Traits\{GeoTrait, AddressTrait};
-class Place extends Thing implements PlaceInterface
+use \shgysk8zer0\PHPSchema\Traits\{PlaceTrait, GeoCoordinatesTrait};
+class Place extends Thing implements PlaceInterface, GeoCoordinatesInterface
 {
 	public const TYPE = 'Place';
 
-	use GeoTrait;
-	use AddressTrait;
+	use PlaceTrait;
 
 	public function jsonSerialize(): array
 	{
 		return array_merge(
 			parent::jsonSerialize(),
-			[
-				'address' => $this->getAddress(),
-				'geo'     => $this->getGeo(),
-			]
+			$this->_placeJSON()
 		);
 	}
 }

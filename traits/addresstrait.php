@@ -6,13 +6,18 @@ trait AddressTrait
 {
 	private $_address = null;
 
-	final public function getAddress():? PostalAddressInterface
+	public function getAddress():? PostalAddressInterface
 	{
 		return $this->_address;
 	}
 
-	final public function setAddress(?PostalAddressInterface $val): void
+	public function setAddress(?PostalAddressInterface $val): void
 	{
 		$this->_address = $val;
+	}
+
+	protected function _addressJSON(): array
+	{
+		return ['address' => $this->getAddress()];
 	}
 }

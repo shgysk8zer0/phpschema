@@ -3,19 +3,18 @@ namespace shgysk8zer0\PHPSchema\Traits;
 
 trait ContactableTrait
 {
-	use TelephoneTrait;
-	use EmailTrait;
 	use AddressTrait;
+	use EmailTrait;
+	use FaxTrait;
+	use TelephoneTrait;
 
-	private $_faxNumber = null;
-
-	public function getFaxNumber():? string
+	protected function _contactableJSON(): array
 	{
-		return $this->_faxNumber;
-	}
-
-	public function setFaxNumber(?string $val): void
-	{
-		$this->_faxNumber = $val;
+		return array_merge(
+			$this->_addressJSON(),
+			$this->_emailJSON(),
+			$this->_faxJSON(),
+			$this->_telephoneJSON()
+		);
 	}
 }

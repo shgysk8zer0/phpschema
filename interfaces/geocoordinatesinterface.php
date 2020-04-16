@@ -7,7 +7,7 @@ interface GeoCoordinatesInterface extends StructuredValueInterface
 
 	public function setElevation(?float $val): void;
 
-	public function getLatitude(): float;
+	public function getLatitude():? float;
 
 	public function setLatitude(?float $val): void;
 

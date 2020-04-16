@@ -1,15 +1,20 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{MediaObjectInterface};
-use \shgysk8zer0\PHPSchema\Traits\{DateTimeTrait};
 use \DateTimeInterface;
 use \DateTimeImmutable;
+use \InvalidArgumentException;
 
 class MediaObject extends CreativeWork implements MediaObjectInterface
 {
-	use DateTimeTrait;
 
 	public const TYPE = 'MediaObject';
+
+	private $_contentSize = null;
+
+	private $_contentUrl = null;
+
+	private $_encodingFormat = null;
 
 	private $_height = null;
 
@@ -22,11 +27,48 @@ class MediaObject extends CreativeWork implements MediaObjectInterface
 		return array_merge(
 			parent::jsonSerialize(),
 			[
-				'height'      => $this->getHeight(),
-				'width'       => $this->getWidth(),
-				'uploadDate'  => $this->getUploadDateAsString(),
+				'contentSize'    => $this->getContentSize(),
+				'contentUrl'     => $this->getContentUrl(),
+				'encodingFormat' => $this->getEncodingFormat(),
+				'height'         => $this->getHeight(),
+				'width'          => $this->getWidth(),
+				'uploadDate'     => $this->getUploadDateAsString(),
 			]
 		);
+	}
+
+	public function getContentSize():? string
+	{
+		return $this->_contentSize;
+	}
+
+	public function setContentSize(?string $val): void
+	{
+		$this->_contentSize = $val;
+	}
+
+	public function getContentUrl():? string
+	{
+		return $this->_contentUrl;
+	}
+
+	public function setContentUrl(?string $val): void
+	{
+		if (isset($val) and ! filter_var($val, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED)) {
+			throw new InvalidArgumentException(sprintf('%s is not a valid URL with path', $val));
+		} else {
+			$this->_contentUrl = $val;
+		}
+	}
+
+	public function getEncodingFormat():? string
+	{
+		return $this->_encodingFormat;
+	}
+
+	public function setEncodingFormat(?string $val): void
+	{
+		$this->_encodingFormat = $val;
 	}
 
 	final public function getHeight():? int

@@ -44,8 +44,9 @@ class Event extends Thing implements EventInterface
 			[
 				'about'       => $this->getAbout(),
 				'doorTime'    => $this->getDoorTimeAsString(),
-				'endTime'     => $this->getEndDateAsString(),
+				'endDate'     => $this->getEndDateAsString(),
 				'eventStatus' => $this->getEventStatus(),
+				'location'    => $this->getLocation(),
 				'organizer'   => $this->getOrganizer(),
 				'startdate'   => $this->getStartDateAsString(),
 				'offers'      => $this->getOffers(),

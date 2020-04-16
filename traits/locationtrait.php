@@ -7,12 +7,12 @@ trait LocationTrait
 {
 	private $_location = null;
 
-	final public function getLocation():? PlaceInterface
+	public function getLocation():? PlaceInterface
 	{
 		return $this->_location;
 	}
 
-	final public function setLocation(?PlaceInterface $val): void
+	public function setLocation(?PlaceInterface $val): void
 	{
 		$this->_location = $val;
 	}

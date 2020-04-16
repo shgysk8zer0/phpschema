@@ -1,12 +1,12 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
-use \shgysk8zer0\PHPSchema\Abstracts\{AbstractEventStatusType};
-use \shgysk8zer0\PHPSchema\Interfaces\{EventStatusTypeInterface};
+use \shgysk8zer0\PHPSchema\Abstracts\{AbstractItemAvailability};
+use \shgysk8zer0\PHPSchema\Interfaces\{ItemAvailabilityInterface};
 use \InvalidArgumentException;
 
-class EventStatusType extends AbstractEventStatusType implements EventStatusTypeInterface
+class ItemAvailability extends AbstractItemAvailability implements ItemAvailabilityInterface
 {
-	public const STATUS = 'EventScheduled';
+	public const STATUS = 'InStock';
 
 	private $_value = null;
 
@@ -16,10 +16,11 @@ class EventStatusType extends AbstractEventStatusType implements EventStatusType
 			$type = $this::STATUS;
 		}
 		$val = sprintf('%s::%s', __CLASS__, $type);
+
 		if (defined($val)) {
 			$this->_value = constant($val);
 		} else {
-			throw new InvalidArgumentException(sprintf('Invalid Event Status: %s', $type));
+			throw new InvalidArgumentException(sprintf('Invalid Item Availability: %s', $type));
 		}
 	}
 
@@ -38,7 +39,7 @@ class EventStatusType extends AbstractEventStatusType implements EventStatusType
 
 	public function jsonSerialize(): string
 	{
-		return "{$this}";
+		return $this->getStatus();
 	}
 
 	public function getValue():? string

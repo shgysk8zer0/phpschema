@@ -5,13 +5,18 @@ trait TelephoneTrait
 {
 	private $_telephone = null;
 
-	final public function getTelephone():? string
+	public function getTelephone():? string
 	{
 		return $this->_telephone;
 	}
 
-	final public function setTelephone(?string $val): void
+	public function setTelephone(?string $val): void
 	{
 		$this->_telephone = $val;
+	}
+
+	protected function _telephoneJSON(): array
+	{
+		return ['telephone' => $this->getTelephone()];
 	}
 }

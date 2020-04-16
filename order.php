@@ -1,10 +1,14 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
+
+use \shgysk8zer0\PHPSchema\Traits\{DateTimeTrait};
 use \DateTimeInterface;
 use \DateTimeImmutable;
 
 class Order extends Thing
 {
+	use DateTimeTrait;
+
 	public const TYPE = 'Order';
 
 	private $_customer = null;
@@ -49,11 +53,7 @@ class Order extends Thing
 
 	public function getOrderDateAsString():? string
 	{
-		if (isset($this->_orderDate)) {
-			return $this->getOrderDate()->format(DateTimeImmutable::W3C);
-		} else {
-			return null;
-		}
+		return $this->_stringifyDate($this->getOrderDate());
 	}
 
 	public function getOrderItem(): iterable

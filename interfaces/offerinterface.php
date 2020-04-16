@@ -4,6 +4,10 @@ use \DateTimeInterface;
 
 interface OfferInterface extends IntangibleInterface
 {
+	public function getAvailability():? ItemAvailabilityInterface;
+
+	public function setAvailability(?ItemAvailabilityInterface $val): void;
+
 	public function getPrice(): float;
 
 	public function setPrice(?float $val): void;

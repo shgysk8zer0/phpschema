@@ -5,8 +5,15 @@ use \shgysk8zer0\PHPSchema\Interfaces\{
 	CreativeWorkInterface,
 	ThingInterface,
 };
+
+use \shgysk8zer0\PHPSchema\Traits\{DateTimeTrait};
+
+use \DateTimeInterface;
+
 class CreativeWork extends Thing implements CreativeWorkInterface
 {
+	use DateTimeTrait;
+
 	public const TYPE = 'CreativeWork';
 
 	private $_about = null;
@@ -15,7 +22,15 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 
 	private $_copyrightYear = null;
 
+	private $_datePublished = null;
+
+	private $_dateModified = null;
+
+	private $_dateCreated = null;
+
 	private $_headline = null;
+
+	private $_publisher = null;
 
 	private $_text = null;
 
@@ -28,8 +43,12 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 			[
 				'about'         => $this->getAbout(),
 				'author'        => $this->getAuthor(),
-				'headline'      => $this->getHeadline(),
 				'copyrightyear' => $this->getCopyrightYear(),
+				'dateCreated'   => $this->getDateCreatedAsString(),
+				'dateModified'  => $this->getDateModifiedAsString(),
+				'datePublished' => $this->getDatePublishedAsString(),
+				'headline'      => $this->getHeadline(),
+				'publisher'     => $this->getPublisher(),
 				'text'          => $this->getText(),
 			]
 		);
@@ -65,6 +84,51 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		$this->_copyrightYear = $val;
 	}
 
+	public function getDateCreated():? DateTimeInterface
+	{
+		return $this->_dateCreated;
+	}
+
+	public function getDateCreatedAsString():? string
+	{
+		return $this->_stringifyDate($this->getDateCreated());
+	}
+
+	public function setDateCreated(?DateTimeInterface $val): void
+	{
+		$this->_dateCreated = $val;
+	}
+
+	public function getDateModified():? DateTimeInterface
+	{
+		return $this->_dateModified;
+	}
+
+	public function getDateModifiedAsString():? string
+	{
+		return $this->_stringifyDate($this->getDateModified());
+	}
+
+	public function setDateModified(?DateTimeInterface $val): void
+	{
+		$this->_dateModified = $val;
+	}
+
+	public function getDatePublished():? DateTimeInterface
+	{
+		return $this->_datePublished;
+	}
+
+	public function getDatePublishedAsString():? string
+	{
+		return $this->_stringifyDate($this->getDatePublished());
+	}
+
+	public function setDatePublished(?DateTimeInterface $val): void
+	{
+		$this->_datePublished = $val;
+	}
+
 	public function getHeadline():? string
 	{
 		return $this->_headline;
@@ -73,6 +137,16 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 	public function setHeadline(?string $val): void
 	{
 		$this->_headline = $val;
+	}
+
+	public function getPublisher():? ContactableInterface
+	{
+		return $this->_publisher;
+	}
+
+	public function setPublisher(?ContactableInterface $val): void
+	{
+		$this->_publisher = $val;
 	}
 
 	public function getText():? string

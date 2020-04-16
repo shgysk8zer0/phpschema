@@ -1,22 +1,21 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{OrganizationInterface};
+use shgysk8zer0\PHPSchema\Traits\{OrganizationTrait};
 use \Throwable;
 
 class Organization extends Thing implements OrganizationInterface
 {
-	use Traits\ContactableTrait;
+	use OrganizationTrait;
+
+	public const TYPE = 'Organization';
 
 	public function jsonSerialize(): array
 	{
-		return array_filter(array_merge(
+		return array_merge(
 			parent::jsonSerialize(),
-			[
-				'email'     => $this->getEmail(),
-				'telephone' => $this->getTelephone(),
-				'address'   => $this->getAddress(),
-			]
-		));
+			$this->_orgJSON()
+		);
 	}
 
 	public function setFromObject(object $data): void

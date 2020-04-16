@@ -20,10 +20,8 @@ class Person extends Thing implements PersonInterface
 	{
 		return array_merge(
 			parent::jsonSerialize(),
+			$this->_contactableJSON(),
 			[
-				'email'     => $this->getEmail(),
-				'telephone' => $this->getTelephone(),
-				'address'   => $this->getAddress(),
 				'birthDate' => $this->getBirthDateAsString(),
 				'worksFor'  => $this->getWorksFor(),
 			]
