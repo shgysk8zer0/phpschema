@@ -21,4 +21,6 @@ interface ThingInterface extends JsonSerializable
 	public function setUrl(?string $val): void;
 
 	public function setFromObject(object $data): void;
+
+	public static function getSchemaUrl(): string;
 }

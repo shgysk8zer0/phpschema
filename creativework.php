@@ -1,9 +1,15 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
-use \shgysk8zer0\PHPSchema\Interfaces\{PersonInterface, CreativeWorkInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+	ContactableInterface,
+	CreativeWorkInterface,
+	ThingInterface,
+};
 class CreativeWork extends Thing implements CreativeWorkInterface
 {
 	public const TYPE = 'CreativeWork';
+
+	private $_about = null;
 
 	private $_author = null;
 
@@ -20,6 +26,7 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		return array_merge(
 			parent::jsonSerialize(),
 			[
+				'about'         => $this->getAbout(),
 				'author'        => $this->getAuthor(),
 				'headline'      => $this->getHeadline(),
 				'copyrightyear' => $this->getCopyrightYear(),
@@ -28,12 +35,22 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		);
 	}
 
-	public function getAuthor():? PersonInterface
+	public function getAbout():? ThingInterface
+	{
+		return $this->_about;
+	}
+
+	public function setAbout(?ThingInterface $val): void
+	{
+		$this->_about = $val;
+	}
+
+	public function getAuthor():? ContactableInterface
 	{
 		return $this->_author;
 	}
 
-	public function setAuthor(?PersonInterface $val): void
+	public function setAuthor(?ContactableInterface $val): void
 	{
 		$this->_author = $val;
 	}

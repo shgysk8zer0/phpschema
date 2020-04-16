@@ -5,9 +5,13 @@ interface CreativeWorkInterface extends ThingInterface
 {
 	// @SEE https://schema.org/CreativeWork
 
-	public function getAuthor():? PersonInterface;
+	public function getAbout():? ThingInterface;
 
-	public function setAuthor(?PersonInterface $val): void;
+	public function setAbout(?ThingInterface $val): void;
+
+	public function getAuthor():? ContactableInterface;
+
+	public function setAuthor(?ContactableInterface $val): void;
 
 	public function getCopyrightYear():? int;
 
