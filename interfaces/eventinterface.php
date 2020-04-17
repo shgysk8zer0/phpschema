@@ -28,9 +28,9 @@ interface EventInterface extends ThingInterface
 
 	public function setEventStatus(?EventStatusTypeInterface $val): void;
 
-	public function getLocation():? PlaceInterface;
+	public function getLocation():? EventLocationInterface;
 
-	public function setLocation(?PlaceInterface $val): void;
+	public function setLocation(?EventLocationInterface $val): void;
 
 	public function getOffers(): iterable;
 
