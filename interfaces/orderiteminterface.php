@@ -1,5 +1,5 @@
 <?php
-namespace shgysk8zer0\PHPAPI\Interfaces\Transation;
+namespace shgysk8zer0\PHPAPI\Interfaces;
 
 interface OrderItemInterface extends ProductOrServiceInterface
 {
