@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-final class MixedEventAttendanceMode extends EventAttendanceMode
+final class MixedEventAttendanceMode extends Abstracts\AbstractEventAttendanceMode
 {
-	public const STATUS = 'MixedEventAttendanceMode';
+	public const TYPE = 'MixedEventAttendanceMode';
 }

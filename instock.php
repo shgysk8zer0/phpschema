@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-final class InStock extends ItemAvailability
+final class InStock extends Abstracts\AbstractItemAvailability
 {
-	public const STATUS = 'InStock';
+	public const TYPE = 'InStock';
 }

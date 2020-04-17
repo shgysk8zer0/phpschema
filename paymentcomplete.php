@@ -5,5 +5,5 @@ use \shgysk8zer0\PHPSchema\Abstracts\{AbstractPaymentStatusType};
 
 final class PaymentComplete extends AbstractPaymentStatusType
 {
-	public const STATUS = 'PaymentComplete';
+	public const TYPPE = 'PaymentComplete';
 }

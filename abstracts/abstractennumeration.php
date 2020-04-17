@@ -1,24 +1,24 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Abstracts;
+
+use \shgysk8zer0\PHPSchema\{Intangible};
+use \shgysk8zer0\PHPSchema\Interfaces\{EnnumerationInterface};
 use \InvalidArgumentException;
 
-abstract class AbstractEnnumerable
+abstract class AbstractEnnumeration extends Intangible implements EnnumerationInterface
 {
-	public const ALLOWED_VALUES = [];
+	public const TYPE = 'Ennumeration';
 
-	protected $_value = null;
-
-	public function __construct(string $val)
+	public function __toString(): string
 	{
-		if (in_array($val, $this::ALLOWED_VALUES)) {
-			$this->_value = $val;
-		} else {
-			throw new InvalidArgumentException(sprintf('"%s" is not in the list of allowd values for %s', $val, get_class($this)));
-		}
+		return sprintf("%s/%s", $this::CONTEXT, $this::TYPE);
 	}
 
-	public function getValue():? string
+	public function jsonSerialize(): array
 	{
-		return $this->_value;
+		return [
+			'@context' => $this::CONTEXT,
+			'@type'    => $this::TYPE,
+		];
 	}
 }

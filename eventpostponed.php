@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-final class EventPostponed extends EventStatusType
+final class EventPostponed extends Abstracts\AbstractEventStatusType
 {
-	public const STATUS = 'EventPostponed';
+	public const TYPE = 'EventPostponed';
 }

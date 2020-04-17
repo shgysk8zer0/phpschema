@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-final class EventRescheduled extends EventStatusType
+final class EventRescheduled extends Abstracts\AbstractEventStatusType
 {
-	public const STATUS = 'EventRescheduled';
+	public const TYPE = 'EventRescheduled';
 }

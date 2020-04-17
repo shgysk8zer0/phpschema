@@ -16,7 +16,7 @@ interface OrderInterface extends IntangibleInterface
 
 	public function setDiscount(?float $val): void;
 
-	public function getDicountCode():? string;
+	public function getDiscountCode():? string;
 
 	public function setDiscountCode(?string $val): void;
 

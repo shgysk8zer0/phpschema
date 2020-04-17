@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-final class OnlineOnly extends ItemAvailability
+final class OnlineOnly extends Abstracts\AbstractItemAvailability
 {
-	public const STATUS = 'OnlineOnly';
+	public const TYPE = 'OnlineOnly';
 }

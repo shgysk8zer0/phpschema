@@ -1,11 +1,10 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Abstracts;
 
-abstract class AbstractEventAttendanceMode
+use \shgysk8zer0\PHPSchema\Interfaces\{EventAttendanceModeInterface};
+
+abstract class AbstractEventAttendanceMode extends AbstractEnnumeration implements EventAttendanceModeInterface
 {
-	public const MixedEventAttendanceMode   = 'https://pending.schema.org/MixedEventAttendanceMode';
-
-	public const OfflineEventAttendanceMode = 'https://pending.schema.org/OfflineEventAttendanceMode';
-
-	public const OnlineEventAttendanceMode  = 'https://pending.schema.org/OnlineEventAttendanceMode';
+	const CONTEXT = 'https://pending.schema.org/MixedEventAttendanceMode';
+	const TYPE = 'EventStatusAttendanceMode';
 }

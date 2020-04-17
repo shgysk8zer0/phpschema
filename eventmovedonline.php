@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-final class EventMovedOnline extends EventStatusType
+final class EventMovedOnline extends Abstracts\AbstractEventStatusType
 {
-	public const STATUS = 'EventMovedOnline';
+	public const TYPE = 'EventMovedOnline';
 }

@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-final class OnlineEventAttendanceMode extends EventAttendanceMode
+final class OnlineEventAttendanceMode extends Abstracts\AbstractEventAttendanceMode
 {
-	public const STATUS = 'OnlineEventAttendanceMode';
+	public const TYPE = 'OnlineEventAttendanceMode';
 }

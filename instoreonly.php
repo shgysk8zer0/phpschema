@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-final class InStoreOnly extends ItemAvailability
+final class InStoreOnly extends Abstracts\AbstractItemAvailability
 {
-	public const STATUS = 'InStoreOnly';
+	public const TYPE = 'InStoreOnly';
 }
