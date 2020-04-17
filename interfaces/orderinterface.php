@@ -30,11 +30,11 @@ interface OrderInterface extends IntangibleInterface
 
 	public function getOrderDateAsString():? string;
 
-	public function getOrderItem(): iterable;
+	public function getOrderedItem(): iterable;
 
-	public function addOrderItem(OrderItemInterface $val): void;
+	public function addOrderedItem(OrderItemInterface $val): void;
 
-	public function setOrderItem(OrderItemInterface ...$vals): void;
+	public function setOrderedItem(OrderItemInterface ...$vals): void;
 
 	public function getOrderNumber():? string;
 

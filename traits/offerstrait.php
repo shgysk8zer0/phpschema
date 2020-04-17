@@ -12,6 +12,11 @@ trait OffersTrait
 		return $this->_offers;
 	}
 
+	public function addOffers(OfferInterface... $vals): void
+	{
+		$this->_offers = array_merge($this->_offers, $vals);
+	}
+
 	public function setOffers(OfferInterface... $val): void
 	{
 		$this->_offers = $val;

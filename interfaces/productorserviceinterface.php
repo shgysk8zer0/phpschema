@@ -5,7 +5,7 @@ interface ProductOrServiceInterface extends ThingInterface
 {
 	public function getOffers(): iterable;
 
-	public function addOffer(OfferInterface $val): void;
+	public function addOffers(OfferInterface... $vals): void;
 
 	public function setOffers(OfferInterface... $vals): void;
 }

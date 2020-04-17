@@ -1,5 +1,5 @@
 <?php
-namespace shgysk8zer0\PHPAPI\Interfaces;
+namespace shgysk8zer0\PHPSchema\Interfaces;
 
 interface OrderItemInterface extends ProductOrServiceInterface
 {
@@ -7,11 +7,15 @@ interface OrderItemInterface extends ProductOrServiceInterface
 
 	public function setOrderItemNumber(?string $val): void;
 
-	public function getOrderItemStatus():? string;
+	public function getOrderItemStatus():? OrderStatusInterface;
 
-	public function setOrderItemStatus(?string $val): void;
+	public function setOrderItemStatus(?OrderStatusInterface $val): void;
 
 	public function getOrderQuantity(): int;
 
 	public function setOrderQuantity(int $val): void;
+
+	public function getOrderedItem():? iterable;
+
+	public function setOrderedItem(ProductOrServiceInterface... $vals): void;
 }

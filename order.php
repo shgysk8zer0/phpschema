@@ -44,7 +44,7 @@ class Order extends Intangible implements OrderInterface
 				'discountCode'     => $this->getDiscountCode(),
 				'discountCurrency' => $this->getDiscountCurrency(),
 				'orderDate'        => $this->getOrderDateAsString(),
-				'orderItem'        => $this->getOrderItem(),
+				'orderedItem'      => $this->getOrderedItem(),
 				'orderNumber'      => $this->getOrderNumber(),
 				'seller'           => $this->getSeller(),
 			]
@@ -116,12 +116,12 @@ class Order extends Intangible implements OrderInterface
 		return $this->_stringifyDate($this->getOrderDate());
 	}
 
-	public function getOrderItem(): iterable
+	public function getOrderedItem(): iterable
 	{
 		return $this->_orderItem;
 	}
 
-	public function setOrderItem(OrderItemInterface ...$vals): void
+	public function setOrderedItem(OrderItemInterface ...$vals): void
 	{
 		$this->_orderItem = $vals;
 	}
@@ -136,7 +136,7 @@ class Order extends Intangible implements OrderInterface
 		$this->_orderNumber = $val;
 	}
 
-	public function addOrderItem(OrderItemInterface $val): void
+	public function addOrderedItem(OrderItemInterface $val): void
 	{
 		if (! in_array($val)) {
 			$this->_orderItem[] = $val;
