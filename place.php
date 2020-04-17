@@ -4,9 +4,10 @@ use \shgysk8zer0\PHPSchema\Interfaces\{
 	GeoCoordinatesInterface,
 	PostalAddressInterface,
 	PlaceInterface,
+	EventLocationInterface,
 };
 use \shgysk8zer0\PHPSchema\Traits\{PlaceTrait, GeoCoordinatesTrait};
-class Place extends Thing implements PlaceInterface, GeoCoordinatesInterface
+class Place extends Thing implements PlaceInterface, GeoCoordinatesInterface, EventLocationInterface
 {
 	public const TYPE = 'Place';
 
