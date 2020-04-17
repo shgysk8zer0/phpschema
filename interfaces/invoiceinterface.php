@@ -8,31 +8,31 @@ interface InvoiceInterface extends IntangibleInterface
 
 	public function setConfirmationNumber(?string $val): void;
 
-	public function getCustomer():? PersonorOrganizationInterface;
+	public function getCustomer():? PersonOrOrganizationInterface;
 
-	public function setCustomer(?ContaqctableInterface $val): void;
-
-	public function getIdentifier():? string;
-
-	public function setIdentifier(?string $val): void;
+	public function setCustomer(?PersonOrOrganizationInterface $val): void;
 
 	public function getPaymentDueDate():? DateTimeInterface;
 
+	public function getPaymentDueDateAsString():? string;
+
 	public function setPaymentDueDate(?DateTimeInterface $val): void;
 
-	public function getPaymentStatus():? string;
+	public function getPaymentStatus():? PaymentStatusTypeInterface;
 
-	public function setPaymentStatus(?string $val): void;
+	public function setPaymentStatus(?PaymentStatusTypeInterface $val): void;
 
-	public function getProvider():? PersonorOrganizationInterface;
+	public function getProvider():? PersonOrOrganizationInterface;
 
-	public function setProvider(?PersonorOrganizationInterface $val): void;
+	public function setProvider(?PersonOrOrganizationInterface $val): void;
 
 	public function getReferencesOrder():? OrderInterface;
 
 	public function setReferencesOrder(?OrderInterface $val): void;
 
 	public function getScheduledPaymentDate():? DateTimeInterface;
+
+	public function getScheduledPaymentDateAsString():? string;
 
 	public function setScheduledPaymentDate(?DateTimeInterface $val): void;
 

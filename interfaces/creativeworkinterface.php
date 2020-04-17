@@ -14,13 +14,13 @@ interface CreativeWorkInterface extends ThingInterface
 
 	public function setAbout(?ThingInterface $val): void;
 
-	public function getAuthor():? PersonorOrganizationInterface;
+	public function getAuthor():? PersonOrOrganizationInterface;
 
-	public function setAuthor(?PersonorOrganizationInterface $val): void;
+	public function setAuthor(?PersonOrOrganizationInterface $val): void;
 
-	public function getCopyrightHolder():? PersonorOrganizationInterface;
+	public function getCopyrightHolder():? PersonOrOrganizationInterface;
 
-	public function setCopyrightHolder(?PersonorOrganizationInterface $val): void;
+	public function setCopyrightHolder(?PersonOrOrganizationInterface $val): void;
 
 	public function getCopyrightYear():? int;
 
@@ -56,9 +56,9 @@ interface CreativeWorkInterface extends ThingInterface
 
 	public function setKeywords(?string $val): void;
 
-	public function getPublisher():? PersonorOrganizationInterface;
+	public function getPublisher():? PersonOrOrganizationInterface;
 
-	public function setPublisher(?PersonorOrganizationInterface $val): void;
+	public function setPublisher(?PersonOrOrganizationInterface $val): void;
 
 	public function getText():? string;
 

@@ -1,10 +1,13 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
-use \shgysk8zer0\PHPSchema\Interfaces\{OrganizationInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+		OrganizationInterface,
+		PersonOrOrganizationInterface,
+};
 use shgysk8zer0\PHPSchema\Traits\{OrganizationTrait};
 use \Throwable;
 
-class Organization extends Thing implements OrganizationInterface
+class Organization extends Thing implements OrganizationInterface, PersonOrOrganizationInterface
 {
 	use OrganizationTrait;
 

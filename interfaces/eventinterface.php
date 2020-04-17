@@ -36,13 +36,13 @@ interface EventInterface extends ThingInterface
 
 	public function setOffers(OfferInterface... $val): void;
 
-	public function getOrganizer():? PersonorOrganizationInterface;
+	public function getOrganizer():? PersonOrOrganizationInterface;
 
-	public function setOrganizer(?PersonorOrganizationInterface $val): void;
+	public function setOrganizer(?PersonOrOrganizationInterface $val): void;
 
-	public function getPerformer():? PersonorOrganizationInterface;
+	public function getPerformer():? PersonOrOrganizationInterface;
 
-	public function setPerformer(?PersonorOrganizationInterface $val): void;
+	public function setPerformer(?PersonOrOrganizationInterface $val): void;
 
 	public function getStartDate():? DateTimeInterface;
 

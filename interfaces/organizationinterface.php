@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Interfaces;
 
-interface OrganizationInterface extends PersonorOrganizationInterface
+interface OrganizationInterface extends ThingInterface
 {
 	public function getLogo():? ImageObjectInterface;
 

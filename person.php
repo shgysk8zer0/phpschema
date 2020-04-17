@@ -1,11 +1,15 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
-use \shgysk8zer0\PHPSchema\Interfaces\{PersonInterface, OrganizationInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+		PersonInterface,
+		OrganizationInterface,
+		PersonOrOrganizationInterface,
+};
 use \shgysk8zer0\PHPSchema\Traits\{ContactableTrait, DateTimeTrait};
 use \DateTimeInterface;
 use \Throwable;
 
-class Person extends Thing implements PersonInterface
+class Person extends Thing implements PersonInterface, PersonOrOrganizationInterface
 {
 	use ContactableTrait;
 	use DateTimeTrait;

@@ -1,11 +1,16 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
+use \shgysk8zer0\PHPSchema\Interfaces\{
+	OrderInterface,
+	OrderItemInterface,
+	PersonOrOrganizationInterface,
+};
 use \shgysk8zer0\PHPSchema\Traits\{DateTimeTrait};
 use \DateTimeInterface;
 use \DateTimeImmutable;
 
-class Order extends Thing
+class Order extends Intangible implements OrderInterface
 {
 	use DateTimeTrait;
 
@@ -31,12 +36,12 @@ class Order extends Thing
 		);
 	}
 
-	public function getCustomer():? PersonorOrganizationInterface
+	public function getCustomer():? PersonOrOrganizationInterface
 	{
 		return $this->_customer;
 	}
 
-	public function setCustomer(?PersonorOrganizationInterface $val): void
+	public function setCustomer(?PersonOrOrganizationInterface $val): void
 	{
 		$this->_customer = $val;
 	}
@@ -68,12 +73,12 @@ class Order extends Thing
 		}
 	}
 
-	public function getSeller():? PersonorOrganizationInterface
+	public function getSeller():? PersonOrOrganizationInterface
 	{
 		return $this->_seller;
 	}
 
-	public function setSeller(?PersonorOrganizationInterface $val): void
+	public function setSeller(?PersonOrOrganizationInterface $val): void
 	{
 		$this->_seller = $val;
 	}

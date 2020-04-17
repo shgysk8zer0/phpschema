@@ -4,7 +4,7 @@ namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{
 	EventInterface,
 	EventStatusTypeInterface,
-	PersonorOrganizationInterface,
+	PersonOrOrganizationInterface,
 	ThingInterface,
 	PlaceInterface,
 	OfferInterface,
@@ -122,22 +122,22 @@ class Event extends Thing implements EventInterface
 		$this->_eventStatus = $val;
 	}
 
-	public function getPerformer():? PersonorOrganizationInterface
+	public function getPerformer():? PersonOrOrganizationInterface
 	{
 		return $this->_performer;
 	}
 
-	public function setPerformer(?PersonorOrganizationInterface $val): void
+	public function setPerformer(?PersonOrOrganizationInterface $val): void
 	{
 		$this->_performer = $val;
 	}
 
-	public function getOrganizer():? PersonorOrganizationInterface
+	public function getOrganizer():? PersonOrOrganizationInterface
 	{
 		return $this->_organizer;
 	}
 
-	public function setOrganizer(?PersonorOrganizationInterface $val): void
+	public function setOrganizer(?PersonOrOrganizationInterface $val): void
 	{
 		$this->_organizer = $val;
 	}

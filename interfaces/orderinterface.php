@@ -2,11 +2,11 @@
 namespace shgysk8zer0\PHPSchema\Interfaces;
 use \DateTimeInterface;
 
-interface OrderInterface extends ThingInterface
+interface OrderInterface extends IntangibleInterface
 {
-	public function getCustomer():? PersonorOrganizationInterface;
+	public function getCustomer():? PersonOrOrganizationInterface;
 
-	public function setCustomer(?PersonorOrganizationInterface $val): void;
+	public function setCustomer(?PersonOrOrganizationInterface $val): void;
 
 	public function getOrderDate():? DateTimeInterface;
 
@@ -18,7 +18,7 @@ interface OrderInterface extends ThingInterface
 
 	public function addOrderItem(OrderItemInterface $val): void;
 
-	public function getSeller():? PersonorOrganizationInterface;
+	public function getSeller():? PersonOrOrganizationInterface;
 
-	public function setSeller(?PersonorOrganizationInterface $val): void;
+	public function setSeller(?PersonOrOrganizationInterface $val): void;
 }

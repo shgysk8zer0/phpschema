@@ -3,7 +3,7 @@ namespace shgysk8zer0\PHPSchema;
 use \shgysk8zer0\PHPSchema\Interfaces\{
 	AudioObjectInterface,
 	CreativeWorkInterface,
-	PersonorOrganizationInterface,
+	PersonOrOrganizationInterface,
 	ThingInterface,
 	VideoObjectInterface,
 };
@@ -91,22 +91,22 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		$this->_about = $val;
 	}
 
-	public function getAuthor():? PersonorOrganizationInterface
+	public function getAuthor():? PersonOrOrganizationInterface
 	{
 		return $this->_author;
 	}
 
-	public function setAuthor(?PersonorOrganizationInterface $val): void
+	public function setAuthor(?PersonOrOrganizationInterface $val): void
 	{
 		$this->_author = $val;
 	}
 
-	public function getCopyrightHolder():? PersonorOrganizationInterface
+	public function getCopyrightHolder():? PersonOrOrganizationInterface
 	{
 		return $this->_copytightHolder;
 	}
 
-	public function setCopyrightHolder(?PersonorOrganizationInterface $val): void
+	public function setCopyrightHolder(?PersonOrOrganizationInterface $val): void
 	{
 		$this->_copytightHolder = $val;
 	}
@@ -196,12 +196,12 @@ class CreativeWork extends Thing implements CreativeWorkInterface
 		$this->_keywords = $val;
 	}
 
-	public function getPublisher():? PersonorOrganizationInterface
+	public function getPublisher():? PersonOrOrganizationInterface
 	{
 		return $this->_publisher;
 	}
 
-	public function setPublisher(?PersonorOrganizationInterface $val): void
+	public function setPublisher(?PersonOrOrganizationInterface $val): void
 	{
 		$this->_publisher = $val;
 	}
