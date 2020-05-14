@@ -4,6 +4,7 @@ use \shgysk8zer0\PHPSchema\Interfaces\{
 		PersonInterface,
 		OrganizationInterface,
 		PersonOrOrganizationInterface,
+		PlaceInterface,
 };
 use \shgysk8zer0\PHPSchema\Traits\{ContactableTrait, DateTimeTrait};
 use \DateTimeInterface;
@@ -18,6 +19,10 @@ class Person extends Thing implements PersonInterface, PersonOrOrganizationInter
 
 	private $_birthDate = null;
 
+	private $_homeLocation = null;
+
+	private $_workLocation = null;
+
 	private $_worksFor = null;
 
 	public function jsonSerialize(): array
@@ -26,8 +31,10 @@ class Person extends Thing implements PersonInterface, PersonOrOrganizationInter
 			parent::jsonSerialize(),
 			$this->_contactableJSON(),
 			[
-				'birthDate' => $this->getBirthDateAsString(),
-				'worksFor'  => $this->getWorksFor(),
+				'birthDate'    => $this->getBirthDateAsString(),
+				'homeLocation' => $this->getHomeLocation(),
+				'workLocation' => $this->getWorkLocation(),
+				'worksFor'     => $this->getWorksFor(),
 			]
 		);
 	}
@@ -45,6 +52,26 @@ class Person extends Thing implements PersonInterface, PersonOrOrganizationInter
 	public function setBirthDate(?DateTimeInterface $val): void
 	{
 		$this->_birthDate = $val;
+	}
+
+	public function getHomeLocation():? PlaceInterface
+	{
+		return $this->_homeLocation;
+	}
+
+	public function setHomeLocation(?PlaceInterface $val): void
+	{
+		$this->_homeLocation = $val;
+	}
+
+	public function getWorkLocation():? PlaceInterface
+	{
+		return $this->_workLocation;
+	}
+
+	public function setWorkLocation(?PlaceInterface $val): void
+	{
+		$this->_workLocation = $val;
 	}
 
 	public function getWorksFor():? OrganizationInterface

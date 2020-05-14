@@ -18,6 +18,8 @@ class Thing implements ThingInterface, LoggerAwareInterface
 
 	private $_name = null;
 
+	private $_alternateName = null;
+
 	private $_image = null;
 
 	private $_description = null;
@@ -48,13 +50,14 @@ class Thing implements ThingInterface, LoggerAwareInterface
 	public function jsonSerialize(): array
 	{
 		return [
-			'@context'    => $this::CONTEXT,
-			'@type'       => $this::TYPE,
-			'identifier'  => $this->getIdentifier(),
-			'name'        => $this->getName(),
-			'description' => $this->getDescription(),
-			'image'       => $this->getImage(),
-			'url'         => $this->getUrl(),
+			'@context'      => $this::CONTEXT,
+			'@type'         => $this::TYPE,
+			'identifier'    => $this->getIdentifier(),
+			'name'          => $this->getName(),
+			'alternateName' => $this->getAlternateName(),
+			'description'   => $this->getDescription(),
+			'image'         => $this->getImage(),
+			'url'           => $this->getUrl(),
 		];
 	}
 
@@ -91,6 +94,16 @@ class Thing implements ThingInterface, LoggerAwareInterface
 	final public function setName(?string $val): void
 	{
 		$this->_name = $val;
+	}
+
+	final public function getAlternateName():? string
+	{
+		return $this->_alternateName;
+	}
+
+	final public function setAlternateName(?string $val): void
+	{
+		$this->_alternateName = $val;
 	}
 
 	final public function getDescription():? string

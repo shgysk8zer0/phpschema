@@ -4,6 +4,14 @@ use \JsonSerializable;
 
 interface ThingInterface extends JsonSerializable
 {
+	public function getName():? string;
+
+	public function setName(?string $val): void;
+
+	public function getAlternateName():? string;
+
+	public function setAlternateName(?string $val): void;
+
 	public function getDescription():? string;
 
 	public function setDescription(?string $val): void;
