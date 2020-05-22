@@ -11,7 +11,12 @@ use \shgysk8zer0\PHPSchema\Interfaces\{
 	EventAttendanceModeInterface,
 };
 
-use \shgysk8zer0\PHPSchema\Traits\{OffersTrait, LocationTrait, DateTimeTrait};
+use \shgysk8zer0\PHPSchema\Traits\{
+	OffersTrait,
+	LocationTrait,
+	DateTimeTrait,
+	Durationtrait,
+};
 
 use \DateTimeInterface;
 
@@ -20,6 +25,7 @@ class Event extends Thing implements EventInterface
 	use DateTimeTrait;
 	use LocationTrait;
 	use OffersTrait;
+	use DurationTrait;
 
 	public const TYPE = 'Event';
 
@@ -49,6 +55,7 @@ class Event extends Thing implements EventInterface
 			[
 				'about'               => $this->getAbout(),
 				'doorTime'            => $this->getDoorTimeAsString(),
+				'duration'            => $this->getDurationAsString(),
 				'endDate'             => $this->getEndDateAsString(),
 				'eventAttendanceMode' => $this->getEventAttendanceMode(),
 				'eventStatus'         => $this->getEventStatus(),
@@ -85,6 +92,11 @@ class Event extends Thing implements EventInterface
 	public function setDoorTime(?DateTimeInterface $val): void
 	{
 		$this->_doorTime = $val;
+	}
+
+	public function getDurationAsString():? string
+	{
+		return $this->calculateDurationAsString($this->getStartDate(), $this->getEndDate());
 	}
 
 	public function getEndDate():? DateTimeInterface

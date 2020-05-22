@@ -14,6 +14,8 @@ interface EventInterface extends ThingInterface
 
 	public function setDoorTime(?DateTimeInterface $val): void;
 
+	public function getDurationAsString():? string;
+
 	public function getEndDate():? DateTimeInterface;
 
 	public function getEndDateAsString():? string;
