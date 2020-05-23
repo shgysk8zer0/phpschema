@@ -1,5 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Interfaces;
+
+use \DateInterval;
 use \DateTimeInterface;
 
 interface EventInterface extends ThingInterface
@@ -13,6 +15,14 @@ interface EventInterface extends ThingInterface
 	public function getDoorTimeAsString():? string;
 
 	public function setDoorTime(?DateTimeInterface $val): void;
+
+	public function getDuration():? DurationInterface;
+
+	public function getDurationAsString():? string;
+
+	public function getDurationAsDateInterval():? DateInterval;
+
+	public function setDuration(?DurationInterface $val): void;
 
 	public function getEndDate():? DateTimeInterface;
 

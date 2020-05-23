@@ -2,7 +2,7 @@
 namespace shgysk8zer0\PHPSchema\Interfaces;
 use \JsonSerializable;
 
-interface ItemAvailabilityInterface extends EnnumerationInterface
+interface ItemAvailabilityInterface extends EnumerationInterface
 {
 	//
 }

@@ -1,6 +1,6 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Interfaces;
 
-interface OrderStatusInterface extends EnnumerationInterface {
+interface OrderStatusInterface extends EnumerationInterface {
 	//
 }

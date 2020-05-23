@@ -2,17 +2,24 @@
 namespace shgysk8zer0\PHPSchema;
 
 use \shgysk8zer0\PHPSchema\Interfaces\{
+	DurationInterface,
+	EventAttendanceModeInterface,
 	EventInterface,
 	EventStatusTypeInterface,
 	PersonOrOrganizationInterface,
-	ThingInterface,
-	PlaceInterface,
 	OfferInterface,
-	EventAttendanceModeInterface,
+	PlaceInterface,
+	ThingInterface,
 };
 
-use \shgysk8zer0\PHPSchema\Traits\{OffersTrait, LocationTrait, DateTimeTrait};
+use \shgysk8zer0\PHPSchema\Traits\{
+	OffersTrait,
+	LocationTrait,
+	DateTimeTrait,
+	Durationtrait,
+};
 
+use \DateInterval;
 use \DateTimeInterface;
 
 class Event extends Thing implements EventInterface
@@ -20,12 +27,15 @@ class Event extends Thing implements EventInterface
 	use DateTimeTrait;
 	use LocationTrait;
 	use OffersTrait;
+	use DurationTrait;
 
 	public const TYPE = 'Event';
 
 	private $_about = null;
 
 	private $_doorTime = null;
+
+	private $_duration = null;
 
 	private $_endDate = null;
 
@@ -49,6 +59,7 @@ class Event extends Thing implements EventInterface
 			[
 				'about'               => $this->getAbout(),
 				'doorTime'            => $this->getDoorTimeAsString(),
+				'duration'            => $this->getDurationAsString(),
 				'endDate'             => $this->getEndDateAsString(),
 				'eventAttendanceMode' => $this->getEventAttendanceMode(),
 				'eventStatus'         => $this->getEventStatus(),
@@ -85,6 +96,51 @@ class Event extends Thing implements EventInterface
 	public function setDoorTime(?DateTimeInterface $val): void
 	{
 		$this->_doorTime = $val;
+	}
+
+	final public function getDuration():? DurationInterface
+	{
+		if (isset($this->_duration)) {
+			return $this->_duration;
+		} else {
+			return Duration::fromDaterange($this->getStartDate(), $this->getEndDate());
+		}
+	}
+
+	public function getDurationAsString():? string
+	{
+		if ($dur = $this->getDuration()) {
+			return $dur->getDateIntervalAsString();
+		} else {
+			return null;
+		}
+	}
+
+	final public function getDurationAsDateInterval():? DateInterval
+	{
+		if ($dur = $this->getDuration()) {
+			return $dur->getDateInterval();
+		} else {
+			return null;
+		}
+	}
+
+	final public function setDuration(?DurationInterface $val): void
+	{
+		$this->_duration = $val;
+	}
+
+	final public function setDurationFromDateInterval(?DateInterval $val): void
+	{
+		$this->setDuration($this->getDurationFromDateInterval($val));
+	}
+
+	final public function setDurationFromDateRange(
+		?DateTimeInterface $from,
+		?DateTimeInterface $to
+	): void
+	{
+		$this->setDuration($this->getDurationFromDateRange($from, $to));
 	}
 
 	public function getEndDate():? DateTimeInterface

@@ -2,12 +2,12 @@
 namespace shgysk8zer0\PHPSchema\Abstracts;
 
 use \shgysk8zer0\PHPSchema\{Intangible};
-use \shgysk8zer0\PHPSchema\Interfaces\{EnnumerationInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{EnumerationInterface};
 use \InvalidArgumentException;
 
-abstract class AbstractEnnumeration extends Intangible implements EnnumerationInterface
+abstract class AbstractEnumeration extends Intangible implements EnumerationInterface
 {
-	public const TYPE = 'Ennumeration';
+	public const TYPE = 'Enumeration';
 
 	public function __toString(): string
 	{
