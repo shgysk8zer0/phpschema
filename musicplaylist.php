@@ -1,7 +1,10 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-use \shgysk8zer0\PHPSchema\Interfaces\{MusicPlaylistInterface, MusicRecodingInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+	MusicPlaylistInterface,
+	MusicRecordingInterface,
+};
 
 class MusicPlaylist extends CreativeWork implements MusicPlaylistInterface
 {
@@ -25,7 +28,7 @@ class MusicPlaylist extends CreativeWork implements MusicPlaylistInterface
 		return count($this->getTrack());
 	}
 
-	public function addTrack(MusicRecodingInterface $val): void
+	public function addTrack(MusicRecordingInterface $val): void
 	{
 		$this->_track[] = $val;
 	}

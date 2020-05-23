@@ -1,11 +1,15 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-use \shgysk8zer0\PHPSchema\Interfaces\{MusicGroupInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+	MusicAlbumInterface,
+	MusicGroupInterface,
+	MusicRecordingInterface,
+};
 
 class MusicGroup extends PerformingGroup implements MusicGroupInterface
 {
-	public const type = 'MusicGroup';
+	public const TYPE = 'MusicGroup';
 
 	private $_album = [];
 

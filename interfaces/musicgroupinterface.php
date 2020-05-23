@@ -1,7 +1,7 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Interfaces;
 
-interface MusicGroupInterface extends PerformingGroupInteface
+interface MusicGroupInterface extends PerformingGroupInterface
 {
 	public function addAlbum(MusicAlbumInterface $val): void;
 

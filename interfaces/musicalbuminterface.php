@@ -11,7 +11,7 @@ interface MusicAlbumInterface extends MusicPlaylistInterface
 
 	public function setAlbumRelease(?MusicReleaseInterface $val): void;
 
-	public function getAlbumReleaseType(): MusicAlbumReleaseTypeInterface;
+	public function getAlbumReleaseType():? MusicAlbumReleaseTypeInterface;
 
 	public function setAlbumReleaseType(?MusicAlbumReleaseTypeInterface $val): void;
 

@@ -1,6 +1,9 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Interfaces;
 
+use \DateTimeInterface;
+use \DateInterval;
+
 interface MusicReleaseInterface extends MusicPlaylistInterface
 {
 	public function getCatalogNumber():? string;
@@ -13,7 +16,18 @@ interface MusicReleaseInterface extends MusicPlaylistInterface
 
 	public function getDuration():? DurationInterface;
 
+	public function getDurationAsString():? string;
+
+	public function getDurationAsDateInterval():? DateInterval;
+
 	public function setDuration(?DurationInterface $val): void;
+
+	public function setDurationFromDateInterval(?DateInterval $val): void;
+
+	public function setDurationFromDateRange(
+		?DateTimeInterface $from,
+		?DateTimeInterface $to
+	): void;
 
 	public function getMusicReleaseFormat():? MusicReleaseFormatTypeInterface;
 
@@ -23,7 +37,7 @@ interface MusicReleaseInterface extends MusicPlaylistInterface
 
 	public function setRecordLabel(?OrganizationInterface $val): void;
 
-	public function getReleaseOf():? MusicAlbumInterfacce;
+	public function getReleaseOf():? MusicAlbumInterface;
 
 	public function setReleaseof(?MusicAlbumInterface $val): void;
 }

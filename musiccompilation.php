@@ -107,9 +107,9 @@ class MusicCompliation extends CreativeWork implements MusicCompilationInterface
 	}
 
 	public function setMusicArrangement(?MusicCompositionInterface $val): void
-	[
+	{
 		$this->_musicArrangement = $val;
-	]
+	}
 
 	public function getMusicalKey():? string
 	{

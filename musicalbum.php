@@ -54,7 +54,7 @@ class MusicAlbum extends MusicPlaylist implements MusicAlbumInterface
 		$this->_albumRelease = $val;
 	}
 
-	public function getAlbumReleaseType(): MusicAlbumReleaseTypeInterface
+	public function getAlbumReleaseType():? MusicAlbumReleaseTypeInterface
 	{
 		return $this->_albumReleaseType;
 	}
