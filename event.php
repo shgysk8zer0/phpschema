@@ -2,13 +2,14 @@
 namespace shgysk8zer0\PHPSchema;
 
 use \shgysk8zer0\PHPSchema\Interfaces\{
+	DurationInterface,
+	EventAttendanceModeInterface,
 	EventInterface,
 	EventStatusTypeInterface,
 	PersonOrOrganizationInterface,
-	ThingInterface,
-	PlaceInterface,
 	OfferInterface,
-	EventAttendanceModeInterface,
+	PlaceInterface,
+	ThingInterface,
 };
 
 use \shgysk8zer0\PHPSchema\Traits\{
@@ -18,6 +19,7 @@ use \shgysk8zer0\PHPSchema\Traits\{
 	Durationtrait,
 };
 
+use \DateInterval;
 use \DateTimeInterface;
 
 class Event extends Thing implements EventInterface
@@ -32,6 +34,8 @@ class Event extends Thing implements EventInterface
 	private $_about = null;
 
 	private $_doorTime = null;
+
+	private $_duration = null;
 
 	private $_endDate = null;
 
@@ -94,9 +98,49 @@ class Event extends Thing implements EventInterface
 		$this->_doorTime = $val;
 	}
 
+	final public function getDuration():? DurationInterface
+	{
+		if (isset($this->_duration)) {
+			return $this->_duration;
+		} else {
+			return Duration::fromDaterange($this->getStartDate(), $this->getEndDate());
+		}
+	}
+
 	public function getDurationAsString():? string
 	{
-		return $this->calculateDurationAsString($this->getStartDate(), $this->getEndDate());
+		if ($dur = $this->getDuration()) {
+			return $dur->getDateIntervalAsString();
+		} else {
+			return null;
+		}
+	}
+
+	final public function getDurationAsDateInterval():? DateInterval
+	{
+		if ($dur = $this->getDuration()) {
+			return $dur->getDateInterval();
+		} else {
+			return null;
+		}
+	}
+
+	final public function setDuration(?DurationInterface $val): void
+	{
+		$this->_duration = $val;
+	}
+
+	final public function setDurationFromDateInterval(?DateInterval $val): void
+	{
+		$this->setDuration($this->getDurationFromDateInterval($val));
+	}
+
+	final public function setDurationFromDateRange(
+		?DateTimeInterface $from,
+		?DateTimeInterface $to
+	): void
+	{
+		$this->setDuration($this->getDurationFromDateRange($from, $to));
 	}
 
 	public function getEndDate():? DateTimeInterface

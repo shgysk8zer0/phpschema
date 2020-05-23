@@ -14,5 +14,5 @@ interface DurationInterface extends QuantityInterface
 
 	public function setDateInterval(?DateInterval $val): void;
 
-	public static function fromDateTimes(DateTimeInterface $start, DateTimeInterface $end): DurationInterface;
+	public function setDateRange(DateTimeInterface $start, DateTimeInterface $end): void;
 }

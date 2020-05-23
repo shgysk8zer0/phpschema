@@ -1,32 +1,48 @@
 <?php
 namespace shgysk8zer0\PHPSchema\Traits;
 
+use \shgysk8zer0\PHPSchema\{Duration};
+use \shgysk8zer0\PHPSchema\Interfaces\{DurationInterface};
 use \DateTimeInterface;
 use \DateInterval;
 
 trait DurationTrait
 {
-	final public function calculateDuration(?DateTimeInterface $from, DateTimeInterface $to):? DateInterval
+	final public function getDurationFromDateRange(
+		?DateTimeInterface $from = null,
+		?DateTimeInterface $to   = null
+	):? DurationInterface
 	{
-		if (isset($from, $to)) {
-			return $from->diff($to);
+		return $this->getDurationFromDateInterval($from->diff($to));
+	}
+
+	final public function getDurationStringFromDateRange(
+		?DateTimeInterface $from = null,
+		?DateTimeInterface $to   = null
+	):? string
+	{
+		if ($dur = $this->getDurationFromDateRange($from, $to)) {
+			return $dur->getDateIntervalAsString();
 		} else {
 			return null;
 		}
 	}
 
-	final public function calculateDurationAsString(
-		?DateTimeInterface $from,
-		?DateTimeInterface $to,
-		string             $format = 'P%yY%mM%dDT%hH%iM%sS'
-		):? string
+	final public function getDurationFromDateInterval(?DateInterval $val): DurationInterface
 	{
-		if ($diff = $this->calculateDuration($from, $to)) {
-			return rtrim(str_replace(
-				['S0F', 'M0S', 'H0M', 'DT0H', 'M0D', 'Y0M', 'P0Y', 'Y0M', 'P0M'],
-				['S', 'M', 'H', 'DT', 'M', 'Y0M', 'P', 'Y', 'P'],
-				$diff->format($format)
-			));
+		if (isset($val)) {
+			$dur = new Duration();
+			$dur->setDateInterval($val);
+			return $dur;
+		} else {
+			return null;
+		}
+	}
+
+	final public function getDurationStringFromDateInterval(?DateInterval $diff):? string
+	{
+		if ($dur = $this->getDurationFromDateInterval($diff)) {
+			return $dur->getDateIntervalAsString();
 		} else {
 			return null;
 		}
