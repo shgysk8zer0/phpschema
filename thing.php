@@ -1,30 +1,50 @@
 <?php
 namespace shgysk8zer0\PHPSchema;
 
-use \shgysk8zer0\PHPSchema\Interfaces\{ImageObjectInterface, ThingInterface};
+use \shgysk8zer0\PHPSchema\Interfaces\{
+	ActionInterface,
+	CreativeWorkInterface,
+	ImageObjectInterface,
+	ThingInterface,
+};
+
 use \shgysk8zer0\PHPAPI\Interfaces\{LoggerAwareInterface};
+
 use \shgysk8zer0\PHPAPI\Traits\{LoggerAwareTrait};
+
 use \shgysk8zer0\PHPAPI\{NullLogger, UUID};
 
 class Thing implements ThingInterface, LoggerAwareInterface
 {
 	use LoggerAwareTrait;
 
-	public const TYPE = 'Thing';
+	public const TYPE    = 'Thing';
 
 	public const CONTEXT = 'https://schema.org';
 
-	private $_identifier = null;
+	private $_additionalType            = null;
 
-	private $_name = null;
+	private $_alternateName             = null;
 
-	private $_alternateName = null;
+	private $_identifier                = null;
 
-	private $_image = null;
+	private $_disambiguatingDescription = null;
 
-	private $_description = null;
+	private $_description               = null;
 
-	private $_url = null;
+	private $_image                     = null;
+
+	private $_mainEntryOfPage           = null;
+
+	private $_name                      = null;
+
+	private $_potentialAction           = [];
+
+	private $_sameAs                    = [];
+
+	private $_subjectOf                 = null;
+
+	private $_url                       = null;
 
 	public function __construct(?object $data = null)
 	{
@@ -50,14 +70,20 @@ class Thing implements ThingInterface, LoggerAwareInterface
 	public function jsonSerialize(): array
 	{
 		return [
-			'@context'      => $this::CONTEXT,
-			'@type'         => $this::TYPE,
-			'identifier'    => $this->getIdentifier(),
-			'name'          => $this->getName(),
-			'alternateName' => $this->getAlternateName(),
-			'description'   => $this->getDescription(),
-			'image'         => $this->getImage(),
-			'url'           => $this->getUrl(),
+			'@context'                  => $this::CONTEXT,
+			'@type'                     => $this::TYPE,
+			'additionalType'            => $this->getAdditionalType(),
+			'identifier'                => $this->getIdentifier(),
+			'name'                      => $this->getName(),
+			'alternateName'             => $this->getAlternateName(),
+			'description'               => $this->getDescription(),
+			'image'                     => $this->getImage(),
+			'mainEntryOfPage'           => $this->getMainEntryOfPage(),
+			'disambiguatingDescription' => $this->getDisambiguatingDescription(),
+			'potentialAction'           => $this->getPotentialAction(),
+			'subjectOf'                 => $this->getSubjectOf(),
+			'sameAs'                    => $this->getSameAs(),
+			'url'                       => $this->getUrl(),
 		];
 	}
 
@@ -114,6 +140,76 @@ class Thing implements ThingInterface, LoggerAwareInterface
 	final public function setDescription(?string $val): void
 	{
 		$this->_description = $val;
+	}
+
+	final public function getAdditionalType():? string
+	{
+		return $this->_additionalType;
+	}
+
+	final public function setAdditionalType(?string $val): void
+	{
+		$this->_additionalType = $val;
+	}
+
+	final public function getDisambiguatingDescription():? string
+	{
+		return $this->_disambiguatingDescription;
+	}
+
+	final public function setDisambiguatingDescription(?string $val): void
+	{
+		$this->_disambiguatingDescription = $val;
+	}
+
+	final public function getMainEntryOfPage():? CreativeWorkInterface
+	{
+		return $this->_mainEntryOfPage;
+	}
+
+	final public function setMainEntryOfPage(?CreativeWorkInterface $val): void
+	{
+		$this->_mainEntryOfPage = $val;
+	}
+
+	final public function getSubjectOf():? CreativeWorkInterface
+	{
+		return $this->_subjectOf;
+	}
+
+	final public function setSubjectOf(?CreativeWorkInterface $val): void
+	{
+		$this->_subjectOf = $val;
+	}
+
+	final public function addPotentialAction(ActionInterface $val): void
+	{
+		$this->_potentialAction[] = $val;
+	}
+
+	final public function getPotentialAction(): iterable
+	{
+		return $this->_potentialAction;
+	}
+
+	final public function setPotentialAction(ActionInterface ...$vals): void
+	{
+		$this->_potentialAction = $vals;
+	}
+
+	final public function addSameAs(string $val): void
+	{
+		$this->_sameAs[] = $val;
+	}
+
+	final public function getSameAs(): iterable
+	{
+		return $this->_sameAs;
+	}
+
+	final public function setSameAs(string ...$vals): void
+	{
+		$this->_sameAs = $vals;
 	}
 
 	final public function getUrl():? string
