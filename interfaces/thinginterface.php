@@ -24,6 +24,34 @@ interface ThingInterface extends JsonSerializable
 
 	public function setImage(?ImageObjectInterface $val): void;
 
+	public function getAdditionalType():? string;
+
+	public function setAdditionalType(?string $val): void;
+
+	public function getDisambiguatingDescription():? string;
+
+	public function setDisambiguatingDescription(?string $val): void;
+
+	public function getMainEntryOfPage():? CreativeWorkInterface;
+
+	public function setMainEntryOfPage(?CreativeWorkInterface $val): void;
+
+	public function getSubjectOf():? CreativeWorkInterface;
+
+	public function setSubjectOf(?CreativeWorkInterface $val): void;
+
+	public function addPotentialAction(ActionInterface $val): void;
+
+	public function getPotentialAction(): iterable;
+
+	public function setPotentialAction(ActionInterface ...$vals): void;
+
+	public function addSameAs(string $val): void;
+
+	public function getSameAs(): iterable;
+
+	public function setSameAs(string ...$vals): void;
+
 	public function getUrl():? string;
 
 	public function setUrl(?string $val): void;
